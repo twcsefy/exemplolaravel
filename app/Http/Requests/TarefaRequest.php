@@ -13,7 +13,7 @@ class TarefaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,8 @@ class TarefaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titulo' => 'required|string|max:255' ,
-            'descricao' =>'nullable|string',
+            'titulo' => 'required|string|max:255',
+            'descricao' => 'nullable|string',
             'concluida' => 'required|boolean',
         ];
     }
@@ -34,14 +34,14 @@ class TarefaRequest extends FormRequest
         throw new HttpResponseException(response()->json([
             'success' => false,
             'errors' => $validator->errors()
-        ],422));
+        ], 422));
     }
 
     public function messages()
     {
         return [
-            'titulo.required' => 'O título da tarefa é obrigatório',
-            'titulo.max' => 'O título da tarefa deve conter no máximo 255 caracteres'
+            'titulo.required' => 'O título a tarefa é obrigatório',
+            'titulo.max' => 'O título da tarefa deve conter no máximo 255 caracteres',
         ];
     }
 }

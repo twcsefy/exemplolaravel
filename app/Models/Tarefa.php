@@ -12,6 +12,6 @@ class Tarefa extends Model
     protected $fillable = [
         'titulo',
         'descricao',
-        'concluida',
+        'concluida'
     ];
 }

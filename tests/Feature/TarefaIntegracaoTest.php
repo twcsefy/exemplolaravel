@@ -12,21 +12,17 @@ class TarefaIntegracaoTest extends TestCase
 
     public function test_criar_tarefa_por_meio_da_api()
     {
-        $response = $this->postJson('/api/tarefas',[
-            'titulo'=> 'Nova Tarefa',
-            'descricao'=> 'Descricao da nova tarefa',
-            'concluida'=> false,
+        $response = $this->postJson('/api/tarefas', [
+            'titulo' => 'Nova Tarefa',
+            'descricao' => 'Descrição da nova tarefa',
+            'concluida' => false
         ]);
 
-        $response->assertStatus(201)
-            ->assertJson([
-                'titulo'=> 'Nova Tarefa',
-                'descricao'=> 'Descricao da nova tarefa',
-                'concluida'=> false,
-            ]);
-
-        $response->assertStatus(422);
-        $response->assertJsonValidationErrors(['titulo']);
+        $response->assertStatus(201)->assertJson([
+            'titulo' => 'Nova Tarefa',
+            'descricao' => 'Descrição da nova tarefa',
+            'concluida' => false
+        ]);
     }
 
     public function test_criar_tarefa_validar_required()
